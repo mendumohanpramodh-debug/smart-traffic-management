@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Traffic Management Demo</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Smart Traffic Management – Live Demo</h1>
+  </header>
+
+  <section id="live">
+    <h2>Live Video Analytics</h2>
+    <div class="video-wrap">
+      <img id="feed" src="/stream" alt="Live stream">
+      <div id="alerts"></div>
+    </div>
+  </section>
+
+  <section id="perf">
+    <h2>Performance Dashboard</h2>
+    <div class="cards">
+      <div class="card"><div class="label">Vehicles Total</div><div id="vehicles_total" class="value">0</div></div>
+      <div class="card"><div class="label">Signal</div><div id="signal" class="value">-</div></div>
+      <div class="card"><div class="label">Helmet Violations</div><div id="v_helmet" class="value">0</div></div>
+      <div class="card"><div class="label">Red-Light Violations</div><div id="v_red" class="value">0</div></div>
+      <div class="card"><div class="label">Emergency Lane</div><div id="v_emg" class="value">0</div></div>
+    </div>
+    <canvas id="densityChart" height="120"></canvas>
+  </section>
+
+  <section id="emergency">
+    <h2>Emergency Demo</h2>
+    <p>When an emergency lane occupancy is detected, the system overrides signals to GREEN for that lane.</p>
+    <div class="legend">
+      <span class="dot green"></span> Green (priority) &nbsp;
+      <span class="dot red"></span> Red (others)
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

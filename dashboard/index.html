@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Traffic Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-traffic-light"></i>
+                    <span>TrafficFlow</span>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="devices">
+                    <i class="fas fa-video"></i>
+                    <span>Devices</span>
+                </li>
+                <li class="nav-item" data-page="traffic">
+                    <i class="fas fa-road"></i>
+                    <span>Traffic Monitoring</span>
+                </li>
+                <li class="nav-item" data-page="violations">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Violations</span>
+                </li>
+                <li class="nav-item" data-page="emergency">
+                    <i class="fas fa-ambulance"></i>
+                    <span>Emergency</span>
+                </li>
+                <li class="nav-item" data-page="accidents">
+                    <i class="fas fa-car-crash"></i>
+                    <span>Accidents</span>
+                </li>
+                <li class="nav-item" data-page="users">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </li>
+                <li class="nav-item" data-page="settings">
+                    <i class="fas fa-cogs"></i>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="breadcrumb">
+                    <span id="current-page">Dashboard</span>
+                </div>
+                <div class="user-profile">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-name">Traffic Control Officer</span>
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <div class="dashboard-grid">
+                        <!-- Quick Metrics -->
+                        <div class="metrics-section">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <h3 id="total-devices">3</h3>
+                                    <p>Total Devices</p>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon active">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <h3 id="active-devices">2</h3>
+                                    <p>Active Devices</p>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <h3 id="pending-violations">8</h3>
+                                    <p>Pending Violations</p>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon danger">
+                                    <i class="fas fa-ambulance"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <h3 id="emergency-alerts">1</h3>
+                                    <p>Emergency Alerts</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Traffic Map -->
+                        <div class="map-section card">
+                            <h3>Live Traffic Monitoring</h3>
+                            <div class="map-container">
+                                <div id="traffic-map" class="traffic-map">
+                                    <div class="map-legend">
+                                        <div class="legend-item">
+                                            <span class="status-dot online"></span>
+                                            <span>Online</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="status-dot maintenance"></span>
+                                            <span>Maintenance</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="status-dot offline"></span>
+                                            <span>Offline</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Intersection View -->
+                        <div class="intersection-section card">
+                            <h3>Live Intersection - Main Street</h3>
+                            <div class="intersection-view">
+                                <div class="intersection-container">
+                                    <div class="lane north" data-status="green">
+                                        <div class="lane-info">
+                                            <span class="lane-label">North</span>
+                                            <span class="vehicle-count">12</span>
+                                            <span class="timer">45s</span>
+                                        </div>
+                                    </div>
+                                    <div class="lane south" data-status="red">
+                                        <div class="lane-info">
+                                            <span class="lane-label">South</span>
+                                            <span class="vehicle-count">8</span>
+                                            <span class="timer">35s</span>
+                                        </div>
+                                    </div>
+                                    <div class="lane east" data-status="red">
+                                        <div class="lane-info">
+                                            <span class="lane-label">East</span>
+                                            <span class="vehicle-count">15</span>
+                                            <span class="timer">30s</span>
+                                        </div>
+                                    </div>
+                                    <div class="lane west" data-status="yellow">
+                                        <div class="lane-info">
+                                            <span class="lane-label">West</span>
+                                            <span class="vehicle-count">6</span>
+                                            <span class="timer">25s</span>
+                                        </div>
+                                    </div>
+                                    <div class="intersection-center">
+                                        <i class="fas fa-traffic-light"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activities -->
+                        <div class="activities-section card">
+                            <h3>Recent Activities</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon emergency">
+                                        <i class="fas fa-ambulance"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <p>Ambulance detected at Main St Junction</p>
+                                        <span class="activity-time">2 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon violation">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <p>Red light violation detected</p>
+                                        <span class="activity-time">7 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon maintenance">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <p>School Zone Monitor - Maintenance mode</p>
+                                        <span class="activity-time">15 minutes ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Devices Page -->
+                <div id="devices-page" class="page">
+                    <div class="page-header">
+                        <h2>Device Management</h2>
+                        <button class="btn btn--primary" id="add-device-btn">
+                            <i class="fas fa-plus"></i> Add New Device
+                        </button>
+                    </div>
+                    <div class="devices-container">
+                        <div class="devices-filters">
+                            <input type="text" class="form-control" id="device-search" placeholder="Search devices...">
+                            <select class="form-control" id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="online">Online</option>
+                                <option value="offline">Offline</option>
+                                <option value="maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="devices-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="devices-tbody">
+                                    <!-- Devices will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traffic Monitoring Page -->
+                <div id="traffic-page" class="page">
+                    <div class="page-header">
+                        <h2>Traffic Monitoring</h2>
+                    </div>
+                    <div class="traffic-grid">
+                        <div class="traffic-density card">
+                            <h3>Real-time Traffic Density</h3>
+                            <div id="traffic-density-chart"></div>
+                        </div>
+                        <div class="signal-controls card">
+                            <h3>Signal Controls</h3>
+                            <div class="controls-grid" id="signal-controls">
+                                <!-- Signal controls will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Violations Page -->
+                <div id="violations-page" class="page">
+                    <div class="page-header">
+                        <h2>Violations Dashboard</h2>
+                        <button class="btn btn--secondary" id="export-violations">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                    </div>
+                    <div class="violations-container">
+                        <div class="violations-filters">
+                            <select class="form-control" id="violation-type-filter">
+                                <option value="">All Types</option>
+                                <option value="No Helmet">No Helmet</option>
+                                <option value="Red Light">Red Light</option>
+                                <option value="Footpath Violation">Footpath</option>
+                            </select>
+                            <select class="form-control" id="violation-status-filter">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="processed">Processed</option>
+                            </select>
+                        </div>
+                        <div class="violations-grid" id="violations-grid">
+                            <!-- Violations will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Page -->
+                <div id="emergency-page" class="page">
+                    <div class="page-header">
+                        <h2>Emergency Management</h2>
+                    </div>
+                    <div class="emergency-container">
+                        <div class="emergency-alerts card">
+                            <h3>Active Emergency Alerts</h3>
+                            <div id="emergency-alerts-list">
+                                <!-- Emergency alerts will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="emergency-controls card">
+                            <h3>Emergency Controls</h3>
+                            <div class="control-panel">
+                                <button class="btn btn--primary emergency-override">Override All Signals</button>
+                                <button class="btn btn--secondary clear-paths">Clear Emergency Paths</button>
+                                <div class="priority-lanes">
+                                    <h4>Priority Lane Management</h4>
+                                    <div id="priority-lanes-list">
+                                        <!-- Priority lanes will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accidents Page -->
+                <div id="accidents-page" class="page">
+                    <div class="page-header">
+                        <h2>Accident Detection</h2>
+                    </div>
+                    <div class="accidents-container">
+                        <div class="accidents-list" id="accidents-list">
+                            <!-- Accidents will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Page -->
+                <div id="users-page" class="page">
+                    <div class="page-header">
+                        <h2>User Management</h2>
+                        <button class="btn btn--primary" id="add-user-btn">
+                            <i class="fas fa-plus"></i> Add User
+                        </button>
+                    </div>
+                    <div class="users-container">
+                        <div class="users-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Assigned Devices</th>
+                                        <th>Last Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users-tbody">
+                                    <!-- Users will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Page -->
+                <div id="settings-page" class="page">
+                    <div class="page-header">
+                        <h2>Settings & Configuration</h2>
+                    </div>
+                    <div class="settings-container">
+                        <div class="settings-grid">
+                            <div class="settings-section card">
+                                <h3>System Configuration</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Default Signal Timer (seconds)</label>
+                                    <input type="number" class="form-control" value="60">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Emergency Override Timeout (minutes)</label>
+                                    <input type="number" class="form-control" value="5">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox" checked> Auto Emergency Detection
+                                    </label>
+                                </div>
+                                <button class="btn btn--primary">Save Configuration</button>
+                            </div>
+                            <div class="settings-section card">
+                                <h3>Notification Settings</h3>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox" checked> Email Notifications
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox" checked> SMS Alerts
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox"> Sound Alerts
+                                    </label>
+                                </div>
+                                <button class="btn btn--primary">Update Preferences</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Device Modal -->
+    <div id="add-device-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Device</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="wizard-steps">
+                    <div class="step active" data-step="1">1. Device Info</div>
+                    <div class="step" data-step="2">2. Location</div>
+                    <div class="step" data-step="3">3. Configuration</div>
+                </div>
+                <div class="step-content">
+                    <div id="step-1" class="step-panel active">
+                        <div class="form-group">
+                            <label class="form-label">Device Name</label>
+                            <input type="text" class="form-control" id="device-name" placeholder="Enter device name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Device Type</label>
+                            <select class="form-control" id="device-type">
+                                <option value="Traffic Signal Controller">Traffic Signal Controller</option>
+                                <option value="Smart Camera">Smart Camera</option>
+                                <option value="Speed Camera">Speed Camera</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="step-2" class="step-panel">
+                        <div class="form-group">
+                            <label class="form-label">Location Address</label>
+                            <input type="text" class="form-control" id="device-location" placeholder="Enter location address">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Coordinates</label>
+                            <div class="coordinate-inputs">
+                                <input type="number" class="form-control" id="device-lat" placeholder="Latitude" step="any">
+                                <input type="number" class="form-control" id="device-lng" placeholder="Longitude" step="any">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-3" class="step-panel">
+                        <div class="form-group">
+                            <label class="form-label">Number of Lanes</label>
+                            <select class="form-control" id="lanes-count">
+                                <option value="2">2 Lanes</option>
+                                <option value="4">4 Lanes</option>
+                                <option value="6">6 Lanes</option>
+                            </select>
+                        </div>
+                        <div id="lanes-config">
+                            <!-- Lane configuration will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="prev-step">Previous</button>
+                <button class="btn btn--primary" id="next-step">Next</button>
+                <button class="btn btn--primary hidden" id="save-device">Save Device</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

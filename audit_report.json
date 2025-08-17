@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "date": "2025-08-15",
+  "security_notes": [
+    "No secrets committed; use .env at runtime",
+    "Local SQLite for demo; restrict network exposure in production"
+  ],
+  "compliance": [
+    "Demo build"
+  ]
+}

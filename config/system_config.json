@@ -1,0 +1,103 @@
+{
+  "camera_source": "data/demo.mp4",
+  "resolution": [
+    640,
+    360
+  ],
+  "fps": 20,
+  "models": {
+    "vehicle_person_model": "yolov8n.pt",
+    "helmet_model": "helmet.pt"
+  },
+  "lanes": {
+    "north": {
+      "region": [
+        [
+          50,
+          220
+        ],
+        [
+          300,
+          220
+        ],
+        [
+          300,
+          350
+        ],
+        [
+          50,
+          350
+        ]
+      ]
+    },
+    "east": {
+      "region": [
+        [
+          340,
+          20
+        ],
+        [
+          620,
+          20
+        ],
+        [
+          620,
+          180
+        ],
+        [
+          340,
+          180
+        ]
+      ]
+    },
+    "south": {
+      "region": [
+        [
+          300,
+          0
+        ],
+        [
+          620,
+          0
+        ],
+        [
+          620,
+          120
+        ],
+        [
+          300,
+          120
+        ]
+      ]
+    },
+    "west": {
+      "region": [
+        [
+          10,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          200
+        ],
+        [
+          10,
+          200
+        ]
+      ]
+    }
+  },
+  "detect_confidence": 0.4,
+  "signal_base_green": 25,
+  "signal_cycle_time": 60,
+  "stopline_y": 400,
+  "demo_video": "tests/sample_videos/demo.mp4",
+  "output_dir": "data/outputs",
+  "db_path": "data/traffic_system.db",
+  "cpu_only": true,
+  "model_path": "models/yolov8m.pt"
+}
