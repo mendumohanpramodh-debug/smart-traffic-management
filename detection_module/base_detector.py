@@ -1,6 +1,7 @@
 
 import os, logging
 try:
+    from dataclasses import dataclass
     from ultralytics import YOLO
 except Exception:
     YOLO=None
@@ -21,4 +22,12 @@ class BaseDetector:
             xy=boxes.xyxy.cpu().numpy(); cls=boxes.cls.cpu().numpy(); confs=boxes.conf.cpu().numpy()
             names=self.model.names if hasattr(self.model,'names') else {}
             for b,c,cf in zip(xy,cls,confs): out.append({'bbox':[int(b[0]),int(b[1]),int(b[2]),int(b[3])],'class':int(c),'name':names.get(int(c),str(int(c))),'conf':float(cf)})
+
         return out
+
+@dataclass
+class Detection:
+    bbox: list[int]
+    cls: int
+    conf: float
+    name: str

@@ -30,7 +30,7 @@ class SmartTrafficManagementSystem:
 """Main orchestrator for the complete smart traffic management system"""
 def __init__(self, config_file='config/system_config.json'):
 """Initialize the complete traffic management system"""
-logger.info(" Initializing Smart Traffic Management System...")
+ logger.info("Initializing Smart Traffic Management System...")
 # Load system configuration
 self.config = self.load_system_config(config_file)
 # Initialize all modules
