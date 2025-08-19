@@ -9,6 +9,7 @@ import logging
 import time
 from datetime import datetime
 from pathlib import Path
+import os
 import threading
 import queue
 # Import our modules
@@ -55,14 +56,14 @@ self.results_queue = queue.Queue()
 def load_system_config(self, config_file):
 """Load system configuration"""
 default_config = {
-"camera_source": 0, # 0 for webcam, or path to video file
+"camera_source": 0,  # 0 for webcam, or path to video file
 "fps": 30,
 "resolution": [640, 480],
-"detection_interval": 1, # Process every N frames
+"detection_interval": 1,  # Process every N frames
 "save_violations": True,
 "save_statistics": True,
-"signal_update_interval": 5, # Update signals every N seconds
-"emergency_response_time": 2, # Seconds to respond to emergency
+"signal_update_interval": 5,  # Update signals every N seconds
+"emergency_response_time": 2,  # Seconds to respond to emergency
 "output_video": False,
 "output_video_path": "output/traffic_analysis.mp4",
 "footpath_regions": {}
@@ -190,7 +191,7 @@ def run_system(self, video_source=None):
 """Run the complete traffic management system"""
 logger.info("🎬 Starting Smart Traffic Management System...")
 # Initialize video capture
-source = video_source or self.config['camera_source']
+ source = video_source or (self.config.get('demo_video') if os.getenv('CI') else self.config['camera_source'])
 cap = cv2.VideoCapture(source)
 if not cap.isOpened():
 logger.error(f" Failed to open video source: {source}")
@@ -240,8 +241,7 @@ break
 elif key == ord('s'):
 screenshot_path = f"screenshots/
 system_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
-Path(screenshot_path).parent.mkdir(exist_ok=True,
-parents=True)
+            Path(screenshot_path).parent.mkdir(exist_ok=True, parents=True)
 cv2.imwrite(screenshot_path, frame)
 logger.info(f" Screenshot saved: {screenshot_path}")
 elif key == ord('e'):
@@ -308,7 +308,5 @@ system.run_system()
 except Exception as e:
 logger.error(f" System error: {e}")
 print(f" System error: {e}")
-if __name__ == "__main__":
-main()
 # Compatibility alias for dashboard
 SmartTrafficApp = SmartTrafficManagementSystem
