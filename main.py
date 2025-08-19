@@ -75,9 +75,7 @@ try:
 with open(config_path, 'r') as f:
 config = json.load(f)
 return {**default_config, **config}
-except Exception as e:
-logger.warning(f"Failed to load config: {e}. Using 
-defaults.")
+except Exception as e: logger.warning(f"Failed to load config: {e}. Using defaults.")
 # Create config directory and file with defaults
 config_path.parent.mkdir(exist_ok=True, parents=True)
 with open(config_path, 'w') as f:
