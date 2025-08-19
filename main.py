@@ -51,7 +51,7 @@ self.system_stats = {
 # Data queues for multi-threading (not used in this example)
 self.frame_queue = queue.Queue(maxsize=10)
 self.results_queue = queue.Queue()
- logger.info(" Smart Traffic Management System initialized
+ logger.info(" Smart Traffic Management System initialized")
 successfully!")
 def load_system_config(self, config_file):
 """Load system configuration"""
