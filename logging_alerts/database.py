@@ -13,3 +13,7 @@ class SimpleDB:
     def log_violation(self,vtype,details):
         conn=sqlite3.connect(self.path); c=conn.cursor(); c.execute('INSERT INTO violations (type,details,ts) VALUES (?,?,?)',(vtype,json.dumps(details),time.time())); conn.commit(); conn.close()
 def get_database(url=None): return SimpleDB(url)
+
+def init_db():
+    """Initializes the database connection and schema."""
+    db = SimpleDB() # This will create the database and tables if they don't exist
